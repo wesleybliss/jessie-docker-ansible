@@ -1,0 +1,14 @@
+logs/*
+!.gitkeep
+node_modules/
+bower_components/
+tmp
+dist
+.DS_Store
+.idea
+coverage
+npm-shrinkwrap.json
+supervisord.log
+supervisord.pid
+core.*
+*.sublime-workspace

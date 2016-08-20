@@ -1,0 +1,53 @@
+---
+-
+
+  hosts: all
+  connection: local
+  gather_facts: yes
+  sudo: True
+  user: vagrant
+  
+  vars:
+    color: black
+  
+  # pre_tasks:
+  #   - name: Check if Aptitude needs to be refreshed
+  #     stat: path=/var/cache/apt
+  #     register: apt_cache_stat
+  #   - name: Update Aptitude if needed
+  #     apt: update_cache=yes
+  #     #when: ansible_date_time.epoch|float - apt_cache_stat.stat.mtime > 60*60*12
+  
+  tasks:
+    
+    - name: Show version
+      action: command echo "{{ ansible_distribution_release }}"
+    
+    # - name: Add Aptitude key for Nodesource
+    #   apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key state=present
+    
+    # - name: Add repository for Nodesource
+    #   apt_repository:
+    #     repo: 'deb https://deb.nodesource.com/node_0.10 {{ ansible_distribution_release }} main'
+    #     update_cache: yes
+    
+    # - name: Install Node.js
+    #   apt: name=nodejs
+    
+    # - name: Install Node.js version manager
+    #   action: command npm i -g n
+    
+    # - name: Install latest version of Node.js
+    #   action: command n stable
+      
+    # - shell: n --latest
+    #   register: node_latest
+      
+    # - name: Link Node.js to bin folder
+    #   action: command ln -sf /usr/local/n/versions/node/{{node_latest}}/bin/node /usr/bin/node
+    
+    - shell: curl -sL https://deb.nodesource.com/setup_6.x | bash -
+    - shell: apt-get install -y nodejs
+    
+    - name: Say Hi
+      action: command echo Heyo

@@ -1,0 +1,13 @@
+version: '2'
+services:
+  app:
+    build: .
+    privileged: true
+    container_name: "app"
+    image: debian/latest
+    environment:
+      - NODE_ENV=development
+      - FOO=bar
+    volumes:
+      - .:/var/www:rw
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
