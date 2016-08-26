@@ -7,7 +7,6 @@ dist
 .DS_Store
 .idea
 coverage
-npm-shrinkwrap.json
 supervisord.log
 supervisord.pid
 core.*
